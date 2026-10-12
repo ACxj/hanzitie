@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小学生字帖生成器 · 人教版二年级上册</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">字</span>
+    <div>
+      <h1>小学生字帖生成器</h1>
+      <p id="editionLabel">人教版（统编版）· 二年级 · 上册</p>
+    </div>
+  </div>
+  <div class="topActions">
+    <button id="btnPrint" class="btn btnPrimary">🖨 打印 / 存为 PDF</button>
+    <button id="btnPng" class="btn">⬇ 下载 PNG</button>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- ========== 左侧控制栏 ========== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="panel">
+      <h3>① 选择课时</h3>
+      <div class="picker">
+        <select id="unitSel" class="select"></select>
+        <select id="lessonSel" class="select"></select>
+      </div>
+      <p class="hint" id="lessonMeta"></p>
+    </div>
+
+    <div class="panel">
+      <h3>② 练习板块</h3>
+      <label class="check"><input type="checkbox" id="s1" checked><span>看拼音写字词</span></label>
+      <label class="check"><input type="checkbox" id="s2" checked><span>生字扩词练习</span></label>
+      <label class="check"><input type="checkbox" id="s3" checked><span>看看生字注音</span></label>
+    </div>
+
+    <div class="panel">
+      <h3>③ 批量生成</h3>
+      <p class="hint">勾选多个课时，一次性合并导出，每课自动分页。</p>
+      <div id="batchList" class="batchList"></div>
+      <div class="batchBtns">
+        <button id="btnAll" class="btn btnGhost">全选本册</button>
+        <button id="btnNone" class="btn btnGhost">清空</button>
+        <button id="btnBatch" class="btn btnPrimary btnWide">生成所选课时</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========== 右侧预览区 ========== -->
+  <main class="viewer">
+    <div class="viewerBar">
+      <div class="zoom">
+        <button class="zbtn" id="zoomOut">−</button>
+        <span id="zoomLabel">100%</span>
+        <button class="zbtn" id="zoomIn">＋</button>
+        <button class="zbtn wide" id="zoomFit">适应宽度</button>
+      </div>
+      <div class="viewerState">
+        <span id="batchHint">当前预览：单课</span>
+        <button id="btnBack" class="zbtn wide" style="display:none">返回单课</button>
+      </div>
+      <div class="pager" id="pager"></div>
+    </div>
+    <div class="canvasWrap" id="canvasWrap">
+      <div class="pages" id="pages"></div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/layout.js"></script>
+<script src="assets/render.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
